@@ -1,0 +1,5 @@
+IC0,k,SDRmax,median_IC,SDR_at_median_IC,note
+0.5,1.2,0.8,-7.6583404541015625,0.0008912591753109724,values used in this study
+0.5,2.0,0.8,-7.6583404541015625,0.013311942617943464,k often used with the same IC0 and SDRmax
+0.0,1.2,0.8,-7.6583404541015625,0.001351170101256282,"IC0 shifted, k unchanged"
+0.5,0.5,0.8,-7.6583404541015625,6.559118391900344e-08,steeper sigmoid

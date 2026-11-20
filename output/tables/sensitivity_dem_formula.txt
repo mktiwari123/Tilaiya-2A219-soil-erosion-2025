@@ -1,0 +1,4 @@
+slope=D8
+formula=USLE length and McCool S
+scale=1.1244161635609349
+pearson=0.7707854560035114

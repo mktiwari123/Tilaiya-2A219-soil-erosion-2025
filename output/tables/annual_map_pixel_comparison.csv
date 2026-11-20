@@ -1,0 +1,2 @@
+n_overlap,mean_dynamic,mean_baseline,median_dynamic,median_baseline,mean_difference_dynamic_minus_baseline,median_difference,pearson_r,fraction_dynamic_within_20_percent
+4139550,9.319240650873924,8.937482367273477,1.344908893108368,1.5670737624168396,0.3817582836004458,0.0,0.930580843228754,0.6699107390899977

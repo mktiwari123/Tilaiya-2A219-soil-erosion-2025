@@ -1,0 +1,13 @@
+treatment,n,mean,median,p95
+optical SAVI month 7,4154545,3.60064182894991,0.005239528138190508,16.412970352172845
+optical SAVI month 7 optical or new cover finite,114325,,,
+June-September interpolation month 7,4154545,8.393693895945361,1.2744231818320884,33.4334867783997
+June-September interpolation month 7 optical or new cover finite,4154545,,,
+RVI line month 7,4154545,10.142462220661614,1.4216858496447606,41.25574364317548
+RVI line month 7 optical or new cover finite,4154545,,,
+optical SAVI month 8,4154545,1.6695916694666664,0.008461035788059235,7.025238815678144
+optical SAVI month 8 optical or new cover finite,2859576,,,
+June-September interpolation month 8,4154545,2.2106699018617157,0.29658721728980836,9.088254870751603
+June-September interpolation month 8 optical or new cover finite,4154545,,,
+RVI line month 8,4154545,2.8987307374028477,0.3755904182898409,12.121234370356806
+RVI line month 8 optical or new cover finite,4154545,,,

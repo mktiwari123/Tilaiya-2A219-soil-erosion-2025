@@ -152,6 +152,73 @@ def add_poly(ax, geom, face, edge, width, label, alpha=1.0, zorder=2):
             )
 
 
+def redraw_figure1():
+    """Redraw Figure 1 from the saved polygons. Does not reload HydroBASINS."""
+    study = shape(shapefile.Reader(str(OUT_DIR / "Tilaiya_2A219_study_mask.shp")).shape(0))
+    dam_geom = shape(shapefile.Reader(str(OUT_DIR / "Tilaiya_dam_catchment_HydroBASINS.shp")).shape(0))
+    rain = shapefile.Reader(str(OUT_DIR / "IMD_Rainfall_Monthly_2025.shp"))
+    seen = set()
+    cells = []
+    for record, geom in zip(rain.records(), rain.shapes()):
+        key = (round(record[1], 2), round(record[2], 2)) if len(record) > 2 else id(geom)
+        if key in seen:
+            continue
+        seen.add(key)
+        cells.append(shape(geom))
+    dam_xy = TO_UTM.transform(DAM_LON, DAM_LAT)
+    draw_context(study, dam_geom, cells, dam_xy)
+
+
+def draw_context(study, dam_geom, cells, dam_xy):
+    STUDY_FIG.parent.mkdir(parents=True, exist_ok=True)
+    bounds = dam_geom.bounds
+    pad_x = 0.03 * (bounds[2] - bounds[0])
+    pad_y = 0.03 * (bounds[3] - bounds[1])
+    extent = (bounds[0] - pad_x, bounds[2] + pad_x, bounds[1] - pad_y, bounds[3] + pad_y)
+    plt.rcParams.update(
+        {
+            "font.family": "sans-serif",
+            "font.sans-serif": ["Arial", "DejaVu Sans"],
+            "font.size": 9,
+            "axes.unicode_minus": False,
+            "savefig.facecolor": "white",
+        }
+    )
+    fig, ax = plt.subplots(figsize=(8.2, 8.4))
+    for cell in cells:
+        add_poly(ax, cell, "#d6e4f0", "#5b7c99", 0.6, "IMD 0.25° rainfall cell", alpha=0.45, zorder=1)
+    add_poly(ax, dam_geom, "#1b6b4a", "#1b3a2f", 1.05, "HydroBASINS catchment to the dam", alpha=0.22, zorder=2)
+    add_poly(ax, study, "#c47b2b", "#8c4a22", 1.35, "Headwater mask, sub-watershed 2A219, 715 km²", alpha=0.35, zorder=3)
+    edge = study.exterior
+    outlet = min(edge.coords, key=lambda xy: (xy[0] - dam_xy[0]) ** 2 + (xy[1] - dam_xy[1]) ** 2)
+    ax.scatter([dam_xy[0]], [dam_xy[1]], s=42, c="#9b2335", marker="^", zorder=6, label="Tilaiya Dam, 24°19'26\" N, 85°31'16\" E")
+    ax.scatter([outlet[0]], [outlet[1]], s=36, c="#1b3a2f", marker="o", zorder=6, label="Headwater mask edge nearest the dam")
+    ax.set_xlim(extent[0], extent[1])
+    ax.set_ylim(extent[2], extent[3])
+    ax.set_aspect("equal")
+    ax.ticklabel_format(useOffset=False, style="plain")
+    ax.set_title("Tilaiya headwater, dam catchment, and rainfall grid", fontsize=12, pad=8, loc="left", color="#1b3a2f")
+    ax.set_xlabel("Easting (m), WGS 84 / UTM zone 45N")
+    ax.set_ylabel("Northing (m)")
+    add_scalebar(ax, extent)
+    add_north_arrow(fig, x=0.86, y=0.78)
+    handles, labels = ax.get_legend_handles_labels()
+    unique = dict(zip(labels, handles))
+    legend = ax.legend(unique.values(), unique.keys(), loc="lower right", frameon=True, fontsize=7.5)
+    legend.get_frame().set_linewidth(0.4)
+    fig.text(
+        0.08,
+        0.01,
+        "The green outline is HydroBASINS, not the Damodar Valley Corporation 984 km² survey.\n"
+        "The green point is the mask vertex nearest the dam, not a surveyed outlet coordinate.",
+        fontsize=7.5,
+        color="#333333",
+    )
+    fig.tight_layout(rect=(0, 0.07, 1, 1))
+    fig.savefig(STUDY_FIG, dpi=200)
+    plt.close(fig)
+
+
 def draw_study(study, study_km2):
     """Map only sub-watershed 2A219, the adopted analysis boundary."""
     STUDY_FIG.parent.mkdir(parents=True, exist_ok=True)

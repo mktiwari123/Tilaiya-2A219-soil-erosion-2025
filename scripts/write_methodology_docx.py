@@ -1962,6 +1962,65 @@ def build():
         "LS, SDR, and IC upright. The abstract states IC0 = -6.29. "
         "No new raster was calculated.",
     )
+    para(
+        doc,
+        "Section 6.5 now carries the heading Methodological sensitivity "
+        "test on pit-filling algorithms before the four-satellite fill. "
+        "That test remains secondary to the unfilled Copernicus "
+        "multiple-flow grid. The Figure 2 caption names the calibrated "
+        "SDR grid at IC0 = -6.29 and the unweighted catchment mean of "
+        "0.20. No new raster was calculated.",
+    )
+    para(
+        doc,
+        "The major-comment revision separates three quantities: the "
+        "1953-2021 live-storage loss on 984 km2, 2025 hillslope detachment "
+        "on the 649 km2 complete-case mask, and export at the headwater "
+        "outlet. The 51-75 interval is called a conditional reservoir "
+        "benchmark. The Copernicus median is not compared with it. "
+        "IC0 = -6.29 is a connectivity scenario constrained by an assumed "
+        "unweighted SDR of 0.20. The erosion-weighted ratios are 0.27 and "
+        "0.22. scripts/37_common_mask_monthly.py was run: on 4,154,545 "
+        "pixels July is 65.43 t/ha and 48.2 percent of the linear-cover "
+        "Arnoldus annual sum. That share was not calculated for the other "
+        "scenarios. The value 772 is described as a 1979-2018 IMDAA "
+        "sensitivity case. The Copernicus LS equation in the text is the "
+        "specific-area form in scripts/33_copernicus_mfd_ls.py, not the "
+        "Desmet-Govers inlet-outlet form, and it was not run at native "
+        "30 m spacing. Water was not masked in the linear and exponential "
+        "maps. Cropland P near 0.5 is the stored grid, and P = 1 is the "
+        "sensitivity case. Section 6.6 cites Tiwari et al. (2026), "
+        "Journal of the Indian Society of Remote Sensing, "
+        "doi:10.1007/s12524-026-02576-x, and states that the machine-learning "
+        "target is that earlier annual surface. No new soil-loss raster "
+        "was calculated.",
+    )
+    doc.add_paragraph(
+        "Before submission the reference annual comparison was restated "
+        "as static base K. On the paired mask of 4,138,768 pixels the "
+        "static-K mean is 119.36 t/ha/yr and the VV-adjusted mean is "
+        "136.38. The SoilGrids-to-K equation, depth interval, and "
+        "invalid-texture rule are not stored with the aligned K raster, "
+        "so they were not invented. The VV layer remains a sensitivity "
+        "test with the prescribed coefficient 0.25. Section 6.2 now names "
+        "the interpolated optical July cover, which stays at or above "
+        "0.15, separately from the stored radar July layer, which can "
+        "reach 0.001. Figure 17 states that the horizontal axis is the "
+        "reference RUSLE value and the vertical axis is the stack "
+        "prediction. The training-maximum limit of 909 is stated for "
+        "Random Forest, XGBoost, and CatBoost. The ridge-stack "
+        "underprediction on the 27 E6 points remains a mean prediction "
+        "of 270 against a mean reference of 334. Tables 6 and 8 now "
+        "carry valid area. The 8.82 million t/yr total is labelled as "
+        "the total on 649.15 km2, 90.8 percent of the 715 km2 headwater. "
+        "Figure 1 was redrawn from the saved study mask, the HydroBASINS "
+        "catchment, the IMD rainfall cells, the published dam coordinate, "
+        "and the mask vertex nearest the dam. That vertex is not a "
+        "surveyed outlet. The 136 and 27.6 values are called scenario "
+        "estimates, and the comparison stays in Table 15. The monthly "
+        "soil-loss rasters were not replaced. This paragraph records a "
+        "prose and figure revision. The figure redraw was run.",
+    )
 
     doc.save(OUT)
     print(OUT)

@@ -1,0 +1,5 @@
+path,exists,width,height,res_x,res_y,crs,dtype,nodata
+D:\A_RKLSCP\Final_Index\Actual_Raster\Final07072026\LULC_2025_RF_v2.tif,True,3835,3352,8.983152841195215e-05,8.983152841195215e-05,EPSG:4326,uint8,
+D:\A_RKLSCP\Final_Index\Actual_Raster\LULC_2025_RF_v2.tif,True,3835,3352,8.983152841195215e-05,8.983152841195215e-05,EPSG:4326,uint8,
+D:\A_RKLSCP\Final_Index\Actual_Raster\LULC_2025.tif,True,3835,3352,8.983152841195273e-05,8.983152841195239e-05,EPSG:4326,uint8,255.0
+D:\A_RKLSCP\Final_Index\Actual_Raster\Aligned_2.tif\LULC_aligned.tif,True,2777,2677,12.5,12.5,EPSG:32645,float32,

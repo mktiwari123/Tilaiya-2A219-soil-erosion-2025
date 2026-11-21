@@ -26,6 +26,11 @@ CM_COEFFICIENT = 1.18
 CM_MIN = 0.001
 CM_MAX = 1.0
 
+# van der Knijff, Jones and Montanarella (2000):
+# C = exp(-2 * NDVI / (1 - NDVI)), then bounded.
+VDK_ALPHA = 2.0
+VDK_BETA = 1.0
+
 # July and August use the SAR canopy proxy because optical scenes
 # are cloud-saturated in the monsoon.
 MONSOON_MONTHS = (7, 8)

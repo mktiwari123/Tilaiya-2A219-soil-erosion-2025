@@ -13,6 +13,8 @@ from tilaiya.constants import (
     CM_COEFFICIENT,
     CM_MAX,
     CM_MIN,
+    VDK_ALPHA,
+    VDK_BETA,
     K_MOISTURE_ALPHA,
     ARNOLDUS_FACTOR,
     ARNOLDUS_LOG_INTERCEPT,
@@ -47,9 +49,10 @@ def monthly_erosivity(monthly_precip_mm, annual_precip_mm):
 def corrected_arnoldus_annual(monthly_precip_mm):
     """Corrected Arnoldus (1977) annual R, MJ mm ha-1 h-1 yr-1.
 
-    R = 17.02 * 10 ** (1.50 * log10(sum(Pm^2) / P) - 0.8188),
-    as stated by Chen et al. (2023). This equation was not fitted
-    to Tilaiya storms.
+    R = 17.02 * 10 ** (1.50 * log10(sum(Pm^2) / P) - 0.8188).
+    Chen et al. (2023) defend 17.02 as the SI conversion from U.S.
+    customary units and identify 1.735 and -0.08188 as incorrect copies.
+    The Morocco equation was not fitted at Tilaiya.
     """
     rainfall = np.asarray(monthly_precip_mm, dtype=np.float64)
     annual = float(np.sum(rainfall))
@@ -126,6 +129,22 @@ def radar_vegetation_index(vv, vh, input_units="linear"):
     with np.errstate(divide="ignore", invalid="ignore"):
         rvi = np.where(denominator <= 0, np.nan, (4.0 * vh) / denominator)
     return rvi
+
+
+def vander_knijff_cover(ndvi, alpha=VDK_ALPHA, beta=VDK_BETA):
+    """C = exp(-alpha * NDVI / (beta - NDVI)), clipped to 0.001-1.
+
+    van der Knijff, Jones and Montanarella (2000) use alpha = 2 and
+    beta = 1. NDVI at or above beta is held just below beta. Negative
+    NDVI is treated as bare cover.
+    """
+    index = np.asarray(ndvi, dtype=np.float64)
+    capped = np.where(index > 0.0, index, 0.0)
+    capped = np.minimum(capped, beta - 1.0e-6)
+    with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
+        cover = np.exp(-alpha * capped / (beta - capped))
+    cover = np.where(np.isfinite(index), cover, np.nan)
+    return np.clip(cover, CM_MIN, CM_MAX)
 
 
 def cover_management(canopy_index):

@@ -1,0 +1,6 @@
+case,mean,above_yield_low,above_yield_high,implied_SDR_at_1.0,implied_SDR_at_1.45,inside_vanoni_window,below_vanoni_window,above_vanoni_window
+"Linear cover, Arnoldus R",135.86488062190722,True,True,0.07551620369469968,0.10952057611862877,False,False,True
+"Exponential NDVI cover, Arnoldus R",27.618961222120625,True,True,0.3714839206835391,0.5387603060205713,False,True,False
+"Linear cover, India-grid R",12.946135187027956,True,False,0.7925145112249818,1.1493777706654709,False,True,False
+"Exponential NDVI cover, India-grid R",2.883791235789446,False,False,3.5578164856969248,5.159874201478582,False,True,False
+"Land-cover lookup as cover, Arnoldus R",28.837563156350136,True,True,0.35578595682210795,0.5159936683735835,False,True,False

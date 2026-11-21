@@ -13,15 +13,17 @@ OUT = ROOT / "output" / "tables" / "reproduction_manifest.csv"
 RELATIVE_DIRS = (
     "scripts",
     "tilaiya",
+    "tests",
     "output/tables",
-    "output/rasters/SoilLoss_Arnoldus",
-    "output/rasters/sensitivity",
+    "output/figures/maps",
+    "output/rasters",
     "data/dem",
 )
 EXTRA = (
     "config.py",
     "README.md",
-    "output/figures/maps/annual_support_mask.png",
+    "requirements.txt",
+    "pytest.ini",
 )
 
 

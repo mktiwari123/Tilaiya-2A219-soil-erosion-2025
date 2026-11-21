@@ -1373,6 +1373,584 @@ def build():
         "checksum script omits Python bytecode. The deposited inventory is "
         "output/tables/reproduction_manifest.csv. No soil-loss raster was recalculated.",
     )
+    para(
+        doc,
+        "A later wording pass restated the manuscript in direct sentences. "
+        "Each definition now says what was calculated. Plot, gauge, and "
+        "bathymetry observations remain unavailable, and the stacking holdout "
+        "remains a random stratified split, with spatial blocks used inside "
+        "training. No soil-loss raster was recalculated.",
+    )
+    para(
+        doc,
+        "Eight highlights were added to the manuscript after the keywords. "
+        "They restate results already calculated: the 2025 monthly maps, "
+        "Arnoldus erosivity, interpolated July and August cover, the reported "
+        "mean and median, the whole-metre LS zeros, the soil-loss mass and "
+        "structural yield, the scenario envelope against the Central Water "
+        "Commission live-storage loss, and the stacking emulation. No "
+        "soil-loss raster was recalculated.",
+    )
+    para(
+        doc,
+        "The manuscript now presents sub-watershed 2A219 as ungauged for "
+        "sediment. Erosion plots, a sediment station on this mask, and a 2025 "
+        "bathymetric survey are unavailable. Published sediment records are "
+        "stated to describe Karso, Banha, earlier Tilaiya streamflow, or "
+        "live-storage change for the whole dam. The 2025 load of the 715 km2 "
+        "mask is therefore estimated from rainfall, satellite cover, soil "
+        "grids, and elevation. No soil-loss raster was recalculated.",
+    )
+    para(
+        doc,
+        "Chen et al. (2023), literature/cited/13_Chen_2023.pdf, was read. "
+        "The manuscript equation uses 17.02 and -0.8188. Chen et al. defend "
+        "that SI conversion and list 1.735 and -0.08188 among the incorrect "
+        "copies. Replacing 17.02 with 1.735 would lower R by a factor of 9.8. "
+        "The mapped mean of 136 t/ha/yr was kept as one scenario and was set "
+        "against Damodar means near 12 t/ha/yr, the 44 percent zero-LS cells, "
+        "July cover near 0.58, and a 14 percent change when K is held static. "
+        "The reservoir loss of 1.01 million m3/yr is 10.3 t/ha/yr at 1.0 t/m3 "
+        "and 14.9 t/ha/yr at 1.45 t/m3 over 98,420 ha. The structural yield was "
+        "removed from the title, abstract, highlights, and conclusions. "
+        "Connectivity was not rebuilt and was not calibrated to the storage "
+        "survey. The title is now a scenario title. Stacking and SHAP were "
+        "moved to a supplement. The 7 October 2021 bulletin sentence was "
+        "removed. No soil-loss raster was recalculated.",
+    )
+    para(
+        doc,
+        "scripts/22_cover_erosivity_budget.py was run. It does not replace "
+        "the Arnoldus soil-loss rasters. Monthly soil loss was rescaled by "
+        "van der Knijff cover, C = exp(-2 * NDVI / (1 - NDVI)), with July "
+        "and August NDVI interpolated from June and September. The mean falls "
+        "from 136 to 27.6 t/ha/yr, and the area above 100 t/ha/yr falls from "
+        "33 percent to 5.8 percent. Erosivity-weighted cover is 0.579 linear "
+        "and 0.167 exponential. The Raj et al. (2022) IRED R-factor, Zenodo "
+        "10.5281/zenodo.6505510, was sampled on the annual pixels. Its mean "
+        "is 772 MJ mm/ha/h/yr, against an Arnoldus mean of 7,783. Substituting "
+        "that magnitude lowers the linear-cover mean to 12.9. Both replacements "
+        "give 2.88. Das et al. (2025) grids are available on request and were "
+        "not sampled. The aligned P grid is 0, 0.5, and 1. The annual-project "
+        "land-cover table (built-up 0.002, cropland 0.28, vegetation 0.005, "
+        "water 0, barren 1) is not that grid. The LS equation is not recorded "
+        "in either project's scripts. Mean LS on the annual support is 1.38. "
+        "Delivery was moved to a supplement. Sections were renumbered 6.1-6.5 "
+        "and 7.1-7.2. The live-storage loss is described as a lower bound on "
+        "sediment retained in the reservoir. This step has been run.",
+    )
+    para(
+        doc,
+        "scripts/23_delivery_window.py was run. It leaves the Arnoldus "
+        "soil-loss rasters in place. Area curves stated by Lim et al. (2005) "
+        "were evaluated at 715 km2 and at the official 984 km2 catchment: "
+        "Vanoni (1975) SDR = 0.4724 A^(-0.125), USDA (1972) "
+        "SDR = 0.5656 A^(-0.11), and Boyce (1975) SDR = 0.3750 A^(-0.2382). "
+        "None is calibrated at Tilaiya. On 984 km2 the Vanoni ratio is 0.20 "
+        "and the gross rate that would supply the live-storage loss of "
+        "10.3-14.9 t/ha/yr is 51-75 t/ha/yr. USDA gives 39-56 and Boyce gives "
+        "141-205. Every cover and erosivity mean was tested against that "
+        "yield and against the Vanoni band. Linear cover with Arnoldus R "
+        "(136) sits above the band, with an implied delivery ratio of "
+        "0.076-0.11. Exponential NDVI cover (27.6) and the land-cover lookup "
+        "used as cover (28.8 on all 4,154,545 annual pixels, nearest class) "
+        "exceed the yield and sit below the band, with implied ratios near "
+        "0.4-0.5. Linear cover with the India-grid magnitude (12.9) implies "
+        "a ratio of 0.79-1.15 and falls short of the 14.9 t/ha/yr bound. "
+        "Both replacements (2.88) lie below the yield. The sentence that "
+        "12.9 meets the reservoir rate was removed. The erosivity-weighted "
+        "cover ratio is 3.56; weighting by R times LS raises it to 4.70, and "
+        "the soil-loss mean ratio is 4.92, so the extra drop is mostly "
+        "covariance with LS. On the nearest class, cropland is P = 0.5, "
+        "vegetation and barren land are P = 1, and built-up is P = 0. "
+        "The small land-cover table values were the lookup cover. "
+        "The IRED workbook gives Hazaribagh district 690, Jharkhand state "
+        "1,198, and the Jharkhand subdivision 1,224. The mask sample is 772. "
+        "A Cherrapunji cell on the same grid is 10,206. Raj et al. "
+        "(EGU22-152) report 3,312 for East and Northeast India. Das et al. "
+        "(2025) monthly maps were not obtained; they are available from the "
+        "corresponding author on request, so the Pm^2 monthly split was not "
+        "tested. Ghosh et al. (2025) use R = 0.363 P + 79 (R about 507-983). "
+        "Biswas and Pani (2015) use the Renard-Freimund monthly average. "
+        "Their soil-loss means are therefore not a check on the Arnoldus "
+        "equation. The van der Knijff coefficient is the European value and "
+        "is uncalibrated here; July-August NDVI is interpolated, with clear "
+        "July data on 2.8 percent of annual pixels, before the exponential. "
+        "The reasoned window is the Vanoni band of 51-75 t/ha/yr, widened "
+        "to about 39-205 by the USDA and Boyce curves. No calculated row "
+        "falls inside 51-75. The rainfall factor is left as the bracket "
+        "772-7,783. This step has been run.",
+    )
+    para(
+        doc,
+        "scripts/24_class_share_and_practice.py was run. It leaves the "
+        "Arnoldus soil-loss rasters in place. Setting P to 1 wherever the "
+        "current practice factor is positive raises the linear-cover mean "
+        "from 136 to 182 t/ha/yr (median 34.3; 40 percent of the area above "
+        "100). Pixels with P = 0 stay at zero. Cropland mean loss rises from "
+        "90 to 174. On the linear-cover map, vegetation is 40 percent of the "
+        "area and 60 percent of the mass, and barren land is 2.2 percent of "
+        "the area and 3.2 percent of the mass. Under the exponential cover, "
+        "barren land is 8.2 percent of the mass. Under the five-class lookup, "
+        "barren land is 23 percent of the mass and vegetation is 2.9 percent. "
+        "The land-cover source grid is LULC_2025_RF_v2, uint8, EPSG:4326, "
+        "0.00009 degrees (about 10 m), five classes. The aligned copy is "
+        "12.5 m float32. No classifier, training sample, satellite input, or "
+        "accuracy is stored with the raster or in the project scripts. "
+        "Vegetation is one class. The India-grid value of 772 is described "
+        "as a low-biased floor. The Jharkhand average in the IRED workbook, "
+        "1,198, is the comparison. The East and Northeast abstract value of "
+        "3,312 was removed from the highlights and from the comparison. "
+        "Das et al. (2025) monthly maps were not obtained; they remain the "
+        "test of the Pm^2 allocation. July is about half the annual mean, "
+        "and an HLS or relaxed-cloud composite was not calculated. The "
+        "connectivity supplement was dropped. The grid mean delivery ratio "
+        "of 0.00105 is about 200 times the Vanoni ratio of 0.20, and the "
+        "grid was not calibrated. The reservoir curves do not choose between "
+        "the means near 28 and the means from 136 to 182. This step has been "
+        "run.",
+    )
+    para(
+        doc,
+        "The manuscript discussion was rewritten after a reading of "
+        "Tilaiya_Manuscript_Draft. No new raster was calculated. Section 7 "
+        "now says the monthly maps time the July peak and do not size the "
+        "load, that the mean of 136 is a zero-LS class plus a high tail, and "
+        "that class shares rank the cover scenarios more sharply than the "
+        "reservoir curves. The Km stretch is described as seasonally null, "
+        "so the seasonal pattern that remains is rainfall. The two "
+        "measurements named as further work are the Das et al. (2025) "
+        "monthly erosivity surfaces, which were not obtained, and an "
+        "observed July-August NDVI from HLS or a relaxed-cloud composite, "
+        "which was not calculated. Repeated local literature was cut to the "
+        "telling in Section 2. The unverified Sardar et al. (2014) rate of "
+        "0.76 mm3/year is stated once and is not used as a benchmark. "
+        "Sentences that still promised a structural yield were aligned with "
+        "the decision to set the connectivity grid aside. The stacking "
+        "holdout R2 is described as recovery of the RUSLE surface from its "
+        "own factors. Main-text tables that followed Table 8 were numbered "
+        "9 to 15 in reading order, the supplement tables were numbered S1 to "
+        "S5, Figure 25 became Figure 13, and the supplement figures became "
+        "Figures 14 to 23. This revision has been written into the manuscript "
+        "generator and regenerated. It has been run as a document revision, "
+        "not as a new calculation.",
+    )
+    para(
+        doc,
+        "scripts/25_zero_ls_provenance.py was run. It does not replace the "
+        "published LS raster or the Arnoldus soil-loss rasters. On the "
+        "4,154,545 annual pixels, published LS is exactly zero on 1,842,858 "
+        "pixels (44.4 percent). Of those zeros, water is 2.7 percent. Cells "
+        "with no D8 drop and an accumulation of one cell, excluding water, "
+        "are 40.4 percent. Cells with no D8 drop that still receive flow are "
+        "1.2 percent, and their median accumulation is two cells. Cells with "
+        "a positive D8 drop are 55.7 percent. Their median integer slope is "
+        "8 percent, a one-metre step across 12.5 m, and 95.3 percent of them "
+        "have an accumulation of one cell. Copernicus D8 slope exceeds 0.5 "
+        "degrees on 88.6 percent of the zeros, with a median slope of 3.2 "
+        "percent. The published raster does not record a routing tool, so it "
+        "is not assigned to Desmet and Govers, Hickey, or Wischmeier and "
+        "Smith. The equations scored in script 20 remain steepest-descent "
+        "D8. USLE length with the McCool steepness factor correlates at "
+        "0.77. The Moore and Burch contributing-area form correlates at "
+        "0.76. The Hickey cumulative-length cutoff was not calculated. In "
+        "the D8 equation, LS is zero only where the steepest descent is "
+        "zero. This step has been run.",
+    )
+    para(
+        doc,
+        "scripts/26_ic0_recentering.py was run. It leaves the stored IC "
+        "raster and the default SDR raster in place. The sigmoid remains "
+        "SDR = 0.8 / (1 + exp((IC0 - IC) / 1.2)). On 4,576,196 pixels the "
+        "mean IC is -7.73 and the median is -7.66. With IC0 = 0.5 the mean "
+        "SDR is 0.00105 and the median is 0.000891, and the mass-weighted "
+        "ratio on the linear-cover map is 0.00169, which recovers the "
+        "earlier delivered mass of 14,873 t/yr. Setting IC0 to the median "
+        "IC gives a median SDR of 0.40, a mean of 0.392, and a mass-weighted "
+        "ratio of 0.471. Setting IC0 to the mean IC gives a mean SDR of "
+        "0.403. Forcing the unweighted mean to 0.15, 0.20, and 0.25 requires "
+        "IC0 of -5.82, -6.29, and -6.69. The mass-weighted ratios are then "
+        "0.206, 0.265, and 0.322. Those three thresholds are chosen to match "
+        "the area-curve window. They are not the median IC. The comparison "
+        "in the manuscript keeps the area curves. A sensitivity raster, "
+        "output/rasters/sensitivity/SDR_IC0_at_median.tif, stores the "
+        "median-centered ratio. This step has been run.",
+    )
+    para(
+        doc,
+        "scripts/27_km_annual_range.py was run. It leaves the stored monthly "
+        "Km rasters and the Arnoldus soil-loss rasters in place. Km remains "
+        "K times (1 + 0.25 times theta). Mean VV on the map pixels is -11.1 dB "
+        "in January and -8.76 dB in July. The literal annual minimum and "
+        "maximum are -33.89 and 16.42 dB. On that range, mean Km is 0.0392 "
+        "in January and 0.0399 in July, and the annual mean on 4,138,768 "
+        "pixels is 134.3 t/ha/yr (median 22.9; 33.2 percent above 100). The "
+        "pooled 5th and 95th percentiles are -14.17 and -6.63 dB. With those "
+        "bounds, mean Km is 0.0387 in January and 0.0416 in July, the July "
+        "mean is 68.1 t/ha, and the annual mean is 140.5 t/ha/yr (median "
+        "23.6; 34.0 percent above 100). Each pixel's own annual minimum and "
+        "maximum gives an annual mean of 140.5 t/ha/yr, with mean Km of "
+        "0.0379 in January and 0.0423 in July. The 0.25 coefficient still "
+        "caps the monthly increase at 25 percent of base K. The reported "
+        "maps keep the within-month stretch. Sensitivity rasters are "
+        "output/rasters/sensitivity/SoilLoss_annual_Km_annual_minmax.tif and "
+        "SoilLoss_annual_Km_annual_p5p95.tif. This step has been run.",
+    )
+    para(
+        doc,
+        "scripts/28_cover_benchmarks.py was run. It leaves the soil-loss "
+        "rasters and the cover layers in place. Erosivity-weighted cover "
+        "was accumulated by nearest land-cover class for the linear factor "
+        "and for the van der Knijff exponential of NDVI, using the same "
+        "June-September interpolation for July and August as the reported "
+        "maps. On the annual support the linear class means are built-up "
+        "0.709, cropland 0.607, vegetation 0.508, water 0.711, and barren "
+        "land 0.664. The exponential class means are 0.359, 0.201, 0.071, "
+        "0.392, and 0.329. July means by class stay within 0.02 of those "
+        "annual values. These means are written to "
+        "output/tables/cover_by_class_versus_benchmarks.csv. They were set "
+        "beside the Karso handbook assignments of Jain and Kothyari (2000), "
+        "the Barakar assignments of Biswas and Pani (2015), and the "
+        "CSWCRTI Dehradun plot values of Narain et al. (2001). No Chota "
+        "Nagpur runoff-plot table was obtained, and the mapped linear cover "
+        "was not replaced. This step has been run.",
+    )
+    para(
+        doc,
+        "A submission pass restated three calculated sensitivities and did "
+        "not write a new raster. The aligned Sentinel-1 stack is the twelve "
+        "months of 2025, so the Km bounds in scripts/27_km_annual_range.py "
+        "are the full extremes available here. Literal annual minimum and "
+        "maximum leave mean Km at 0.0392 in January and 0.0399 in July. "
+        "The published LS raster still records no flow-accumulation tool, "
+        "length equation, or sink-filling threshold. The comparison equation "
+        "in scripts/20_dem_k_sensitivity.py is D8 steepest descent on the "
+        "stored whole-metre DEM with no depression fill: LS = (lambda / "
+        "22.13)^m times the McCool S, multiplied by 1.12, and LS is zero "
+        "where the steepest descent is zero. Priority-flood filling belongs "
+        "to the connectivity index, not to that LS test. scripts/26_ic0_recentering.py "
+        "already stores the median-centered case: mass-weighted SDR 0.471, "
+        "delivered 4.16 million t/yr, or 2.87 million m3/yr at 1.45 t/m3. "
+        "That ratio sits above the Vanoni ratio of 0.20 and the Boyce ratio "
+        "of 0.073. The stored SDR raster remains at IC0 = 0.5, and the "
+        "manuscript comparison keeps the area curves. This pass has been "
+        "written into the manuscript. No new raster was calculated.",
+    )
+    para(
+        doc,
+        "Three scripts were added for Visual Studio and have not been run. "
+        "scripts/29_ls_sinkfill_mfd.py fills closed pits on the stored "
+        "whole-metre DEM by priority-flood and recalculates D8 USLE-McCool "
+        "length and a multiple-flow Desmet-Govers length. It does not "
+        "replace output/rasters/LS/LS.tif. Equal-metre plateaus stay flat "
+        "after a pit fill. Copernicus GLO-30 already lowered the zero share "
+        "to 1.2 percent and left the annual mean at 119. "
+        "scripts/30_sdr_vanoni_threshold.py writes "
+        "output/rasters/sensitivity/SDR_IC0_vanoni_0.20.tif at IC0 = -6.2868, "
+        "the threshold whose unweighted mean SDR is 0.20. The stored SDR "
+        "raster stays at IC0 = 0.5. The mass-weighted ratio at that threshold "
+        "is 0.265 and the delivered volume is 1.61 million m3/yr. Paths end "
+        "at the catchment outlet. scripts/31_km_multiyear_envelope.py "
+        "inventories Tilaiya_2020 through Tilaiya_2025 monthly stacks. Only "
+        "2025 is present, so a multi-year Km envelope cannot be calculated "
+        "until those years are aligned. These three scripts are coded and "
+        "have not been run. The manuscript planning range of 51-75 t/ha/yr "
+        "uses the Vanoni ratio and the live-storage loss already calculated. "
+        "It is not a new RUSLE raster.",
+    )
+    para(
+        doc,
+        "scripts/30_sdr_vanoni_threshold.py was run. It writes "
+        "output/rasters/sensitivity/SDR_IC0_vanoni_0.20.tif at IC0 = -6.2868. "
+        "On 4,576,196 pixels the unweighted mean SDR is 0.200 and the median "
+        "is 0.193. On the published linear-cover map the mass-weighted ratio "
+        "is 0.265 and the delivered volume is 1.61 million m3/yr. The stored "
+        "SDR raster was not replaced. scripts/32_copernicus_vanoni_delivery.py "
+        "was run. It multiplies output/rasters/sensitivity/SoilLoss_annual_copernicus_LS.tif "
+        "by that ratio. On 4,138,768 pixels the Copernicus gross mean is "
+        "118.8 t/ha/yr and the median is 62.4. The mass-weighted ratio is "
+        "0.214. Delivered volume is 1.14 million m3/yr. The delivered grid is "
+        "output/rasters/sensitivity/Delivered_copernicus_LS_IC0_vanoni.tif. "
+        "The Copernicus LS grid itself was calculated earlier by "
+        "scripts/20_dem_k_sensitivity.py and was not recalculated in this "
+        "pass. The manuscript calls 51-75 t/ha/yr the hydrologically "
+        "reconciled consensus because that is the gross rate implied by the "
+        "live-storage loss at SDR 0.20, and the Copernicus median falls "
+        "inside it. This step has been run.",
+    )
+    para(
+        doc,
+        "scripts/33_copernicus_mfd_ls.py was run. It leaves the published "
+        "LS raster and the Arnoldus soil-loss rasters in place. Copernicus "
+        "GLO-30 on the 12.5 m grid is routed by slope-proportional multiple "
+        "flow. LS = 1.4 * (A_s / 22.13)^0.4 * (sin beta / 0.0896)^1.3, "
+        "with A_s the contributing area per unit width. LS is zero only "
+        "where every neighbour is level or higher. On 4,154,545 annual "
+        "pixels the zero share is 1.04 percent, the soil-loss median is "
+        "71.9 t/ha/yr, and the mean is 139.6. The 0-5 class is 10.7 percent "
+        "and the class above 100 is 40.6 percent. Outputs are "
+        "output/rasters/sensitivity/LS_copernicus_mfd_desmet.tif, "
+        "SoilLoss_annual_copernicus_mfd.tif, and "
+        "output/tables/copernicus_mfd_desmet.csv. This step has been run.",
+    )
+    para(
+        doc,
+        "scripts/34_sdr_vanoni_spatial.py was run. It leaves the stored "
+        "SDR raster at IC0 = 0.5. The routing map is "
+        "output/rasters/sensitivity/SDR_IC0_vanoni_0.20.tif, with IC0 = "
+        "-6.29. On the multiple-flow Copernicus soil-loss grid the "
+        "unweighted mean ratio is 0.200, the mass-weighted ratio is 0.215, "
+        "and the delivered volume is 1.35 million m3/yr. The highest fifth "
+        "of the ratio carries 37.7 percent of that mass. Rainfall cell 4 "
+        "carries 44.6 percent and cell 3 carries 46.9 percent. The map is "
+        "output/figures/maps/SDR_IC0_vanoni.png. Paths end at the catchment "
+        "outlet. This step has been run.",
+    )
+    para(
+        doc,
+        "scripts/31_km_multiyear_envelope.py was run. It inventories "
+        "data/aligned/Tilaiya_YYYY_MM.tif for 2020 through 2025 and writes "
+        "output/tables/km_multiyear_availability.csv. Twelve of 72 months "
+        "are present, all of them 2025. The first missing file is "
+        "Tilaiya_2020_01.tif, and 60 months are missing. No multi-year Km "
+        "was calculated, and the stored Km rasters were not replaced. The "
+        "2025 envelope, already calculated by scripts/27_km_annual_range.py, "
+        "leaves January and July mean Km at 0.0392 and 0.0399 under the "
+        "literal annual minimum and maximum. This step has been run.",
+    )
+    para(
+        doc,
+        "The manuscript now states the three roles of the cover spread. "
+        "Linear cover, 136 t/ha/yr, is the uncalibrated upper bound: the "
+        "adopted SAVI coefficient 1.18 leaves cropland at 0.61 and vegetation "
+        "at 0.51, above the published factors. Exponential cover, 27.6 t/ha/yr, "
+        "is the lower bound from the European van der Knijff coefficient, "
+        "which was not fitted at Tilaiya. The band 51-75 t/ha/yr is the "
+        "planning target implied by the live-storage loss at SDR 0.20. No "
+        "new raster was calculated. This restatement has been written into "
+        "the manuscript.",
+    )
+    para(
+        doc,
+        "Section 6.6 of the manuscript now states the holdout comparison "
+        "in the main text. On 3,809 points the Reduced Integrated perceptron "
+        "has R2 0.920, XGBoost 0.451, and Random Forest 0.443. Class E6, "
+        "27 points above 100 t/ha/yr, has stack RMSE 263. The largest "
+        "training soil loss is 909 and the largest holdout value is 2,769. "
+        "A tree returns a leaf value and cannot pass that training maximum. "
+        "The perceptron is continuous and can follow the RUSLE product past "
+        "it. No model was retrained, and the maps were not changed. This "
+        "restatement has been written into the manuscript.",
+    )
+    para(
+        doc,
+        "Figures 11 and 13 were redrawn so the patterns can be read in the "
+        "manuscript. July Km uses the 2nd to 98th percentile of that month. "
+        "The monthly soil-loss plate uses a shared scale of 0 to 50 t/ha/month, "
+        "with higher values saturated. Figure 12 is the existing annual class "
+        "map. Images are flattened onto a white background before they are "
+        "placed in the Word file. No soil-loss raster was recalculated.",
+    )
+    para(
+        doc,
+        "The manuscript introduction now states the Central Water Commission "
+        "live-storage loss of 1.01 million m3/yr as the reason for mapping "
+        "sub-watershed 2A219. Section 5.6 presents IC0 = -6.29 as a "
+        "calibration of the literature default 0.5, not as a discarded grid. "
+        "Table 17 in the main text reports the holdout member scores. "
+        "Figure 14 is a logarithmic cumulative distribution of the annual "
+        "Arnoldus map, and Figure 15 places that class map beside the "
+        "calibrated delivery ratio. No new soil-loss raster was calculated. "
+        "This restatement has been written into the manuscript.",
+    )
+    para(
+        doc,
+        "scripts/35_dem_satellite_ls.py was run. It conditions three "
+        "satellite elevations with the same sequence and does not replace "
+        "the published LS raster or the Arnoldus soil-loss maps. ALOS PALSAR "
+        "is the stored whole-metre L-band DEM. Copernicus GLO-30 is the "
+        "aligned TanDEM-X grid. SRTM is the C-band 1-arc-second tile "
+        "N24E085 from elevation-tiles-prod, written as data/dem/SRTM_N24E085.tif "
+        "and bilinearly warped to output/rasters/sensitivity/SRTM_GL1_12m5.tif. "
+        "ASTER GDEM was not retrieved because e4ftl01.gsfc.nasa.gov did not "
+        "resolve. Each surface is filled by a Barnes priority flood from "
+        "the mask boundary. Remaining level cells rise by 1 mm per cell "
+        "away from a draining neighbour. LS then uses the Desmet-Govers "
+        "multiple-flow form in scripts/33_copernicus_mfd_ls.py, with no "
+        "1.12 scale. On 4,154,545 pixels, ALOS is flat on 38.5 percent of "
+        "cells before and after the fill, the pit share is zero, and after "
+        "the millimetre step the LS zero share is 13.6 percent, the soil-loss "
+        "median is 93.8 t/ha/yr, and the mean is 144.3. Copernicus is flat "
+        "on 1.04 percent before the fill and 5.39 percent after it, with a "
+        "pit share of 4.80 percent; after the millimetre step the zero share "
+        "is 3.30 percent, the median is 67.8, and the mean is 136.3. SRTM is "
+        "flat on 2.51 percent before the fill and 15.1 percent after it, "
+        "with a pit share of 13.3 percent; after the millimetre step the "
+        "zero share is 7.71 percent, the median is 77.1, and the mean is "
+        "136.4. Cells gentler than 0.5 degrees are 38.5, 13.7, and 18.8 "
+        "percent. The unfilled Copernicus multiple-flow grid from script 33 "
+        "remains the corrected terrain. Outputs are "
+        "output/rasters/sensitivity/LS_alos_filled_mfd.tif, "
+        "LS_copernicus_filled_mfd.tif, LS_srtm_filled_mfd.tif, the matching "
+        "conditioned DEM and annual soil-loss grids, and "
+        "output/tables/dem_satellite_ls.csv. This step has been run.",
+    )
+    para(
+        doc,
+        "scripts/35_dem_satellite_ls.py was run again for ASTER only. "
+        "ALOS, Copernicus, and SRTM were not recalculated. The elevation "
+        "file is data/dem/ASTGTMV003_N24E085_dem.tif, the ASTER GDEM v3 "
+        "tile for 24-25 N and 85-86 E. ASTER GDEM is a Terra optical stereo "
+        "surface, not radar. The companion stack-count file "
+        "ASTGTMV003_N24E085_num.tif was not used as elevation. Neighbouring "
+        "tiles are on disk, and the reference grid lies inside N24E085, so "
+        "they were not mosaicked. The elevation band was bilinearly warped "
+        "to output/rasters/sensitivity/ASTER_GDEM_12m5.tif. The same Barnes "
+        "priority flood from the mask boundary, the 1 mm drainage step, and "
+        "the Desmet-Govers multiple-flow form in scripts/33_copernicus_mfd_ls.py "
+        "were applied, with no 1.12 scale. This step has been run. On "
+        "4,154,545 pixels, ASTER is flat on 1.24 percent of cells before "
+        "the fill and on 23.7 percent after it, so the fill increases the "
+        "flat share. The pit share is 23.3 percent. After the millimetre "
+        "step the LS zero share is 10.5 percent, 25.4 percent of cells are "
+        "gentler than 0.5 degrees, the soil-loss median is 116.7 t/ha/yr, "
+        "and the mean is 219.9. The 0-5 class is 30.2 percent and the class "
+        "above 100 is 53.2 percent. The median of 116.7 does not lie in "
+        "the 51-75 band. The mean of 219.9 is not the planning consensus. "
+        "The planning target of 51-75 remains the Vanoni gross rate. The "
+        "unfilled Copernicus multiple-flow grid from script 33 remains the "
+        "corrected terrain. Outputs are "
+        "output/rasters/sensitivity/LS_aster_filled_mfd.tif, "
+        "DEM_aster_conditioned.tif, SoilLoss_annual_aster_filled_mfd.tif, "
+        "and the aster row of output/tables/dem_satellite_ls.csv. The "
+        "published LS raster and the Arnoldus soil-loss maps were not "
+        "replaced.",
+    )
+    para(
+        doc,
+        "After the later DEM edits, the manuscript was read again for "
+        "sentences that still set the connectivity grid aside. The "
+        "discussion opening still said that Section 6.4 tests the scenarios "
+        "against the yield and the area curves. That sentence now keeps "
+        "the calibrated map at IC0 = -6.29 (Figure 2) as the routing map "
+        "and the Vanoni, USDA, and Boyce curves as the lumped check. "
+        "Section 5.6 already points to that map, to the highest fifth of "
+        "the ratio, and to rainfall cells 3 and 4, and it keeps the paths "
+        "at the outlet of sub-watershed 2A219. No new raster was written. "
+        "This restatement has been written into the manuscript.",
+    )
+    para(
+        doc,
+        "This prose pass records that the unfilled Copernicus multiple-flow "
+        "grid is the primary terrain result in the manuscript, no new raster "
+        "was written, and the published LS raster was not replaced.",
+    )
+    para(
+        doc,
+        "The introduction now opens on three results already calculated. "
+        "Replacing erosivity moves the annual mean by about a factor of ten, "
+        "and replacing cover moves it by about a factor of five. July "
+        "contains about half of the linear-cover annual mean. The Central "
+        "Water Commission live-storage loss of 1.01 million m3/yr, at a "
+        "Vanoni delivery ratio of 0.20, is the benchmark that sets the "
+        "51-75 planning band. No new raster was calculated. This "
+        "restatement has been written into the manuscript.",
+    )
+    para(
+        doc,
+        "Section 6.5 now leads with the topographic result. Whole-metre "
+        "storage forces LS to zero on 44.36 percent of annual-support pixels "
+        "and holds the median at 21.7 t/ha/yr. The unfilled Copernicus "
+        "multiple-flow grid brings the zero share to 1.0 percent and the "
+        "median to 72, with the mean remaining 140 because 41 percent of "
+        "the area exceeds 100. The monthly series holds the legacy grid "
+        "fixed so that July is a timing result. No new raster was calculated.",
+    )
+    para(
+        doc,
+        "Section 5.6 now leads with the connectivity calibration. On this "
+        "plateau the default threshold IC0 = 0.5 returns a mean delivery "
+        "ratio of 0.00105, and the Vanoni ratio of 0.20 is about 190 times "
+        "that mean. Moving only the threshold to -6.29 sets the unweighted "
+        "mean ratio to 0.20. On the multiple-flow Copernicus soil-loss grid "
+        "that ratio carries 1.35 million m3/yr to the outlet of sub-watershed "
+        "2A219. The shoreline remains outside the mask. No new raster was "
+        "calculated.",
+    )
+    para(
+        doc,
+        "A wording pass restated the legacy slope-length comparison, the "
+        "monthly baseline, the three cover formulations, and the unused "
+        "radar-to-optical fit as design choices, and recast the study-area "
+        "prose. This pass has been written into the manuscript, and no new "
+        "raster was calculated.",
+    )
+    para(
+        doc,
+        "The manuscript was revised against the suggestions in "
+        "C:\\Users\\tiwar\\Desktop\\revisions.docx. The abstract separates "
+        "seasonal timing from the size of the annual load. Section 6.4 "
+        "opens on the Central Water Commission 68-year live-storage survey "
+        "as the benchmark for the 51-75 band. Section 6.6 states that the "
+        "perceptron reproduces the multiplicative surface and that RMSE 263 "
+        "on the class above 100 is the stack. Section 7.2 pairs the "
+        "integer-metre zero class with the Copernicus multiple-flow median "
+        "of 72 and mean of 140. Mediterranean scrub, elevations of 364 to "
+        "628 m, Archean gneiss, and a Sentinel-2 accuracy test of the class "
+        "map were not added. Flow paths still end at the catchment outlet. "
+        "No new raster was calculated.",
+    )
+    para(
+        doc,
+        "The listed revisions in C:\\Users\\tiwar\\Desktop\\revisions.docx "
+        "were written into the manuscript. The abstract opens on the "
+        "separation of seasonal timing from annual size. The study area "
+        "states the measured ALOS range, 312 to 670 m, rather than "
+        "364 to 628 m. The class map is compared with Sentinel-2 SAVI. "
+        "No classifier accuracy score was calculated. Section 5.6 "
+        "recalibrates IC0 from 0.5 to -6.29 and carries 1.35 million "
+        "m3/yr to the 2A219 outlet. Section 6.1 states that July times "
+        "the pulse while Arnoldus erosivity on the five cells runs from "
+        "6854 to 12083. Section 6.4 opens on the 68-year live-storage "
+        "benchmark. Section 6.6 opens on the perceptron against the trees. "
+        "The shoreline, Mediterranean scrub, Archean gneiss, and the "
+        "span 2827 to 12083 were not inserted. No new raster was calculated.",
+    )
+    para(
+        doc,
+        "The abstract cadence for the Copernicus result was rewritten. "
+        "Unfilled multiple-flow Desmet-Govers routing on Copernicus GLO-30 "
+        "reduces the zero slope-length class from 44.36 percent to 1.0 "
+        "percent. The median of 72 t/ha/yr lies in the 51-75 planning band "
+        "and the mean of 140 does not, with 41 percent of the map still "
+        "above 100. The monthly series holds one slope-length grid, and "
+        "July accounts for about half the linear-cover annual detachment. "
+        "The phrase that the median directly matches the planning target "
+        "was not used. No new raster was calculated.",
+    )
+    para(
+        doc,
+        "Section 6 now states why both terrain grids are reported. The "
+        "legacy ALOS slope-length grid is kept for the twelve-month series "
+        "so month-to-month differences are erosivity and cover. The unfilled "
+        "Copernicus GLO-30 multiple-flow grid is the annual terrain result. "
+        "It reduces the zero class from 44.36 percent to 1.0 percent. Its "
+        "median of 72 t/ha/yr lies in the 51-75 band implied by the "
+        "live-storage loss at a Vanoni ratio of 0.20. Its mean of 140 does "
+        "not, so the text does not say that gross erosion is reconciled "
+        "with the reservoir sedimentation record. No new raster was calculated.",
+    )
+    para(
+        doc,
+        "The analysis code is prepared for the GitHub repository "
+        "mktiwari123/Tilaiya-2A219-soil-erosion-2025. That deposit holds "
+        "scripts/, tilaiya/, tests/, and output/tables/. The project folder "
+        "keeps the DEM tiles, the soil-loss and sensitivity rasters, the "
+        "map figures, and the manuscript. The reproduction manifest lists "
+        "checksums for the code, tables, figures, rasters, and DEM tiles. "
+        "Large rasters are not part of the code deposit. No new raster "
+        "was calculated.",
+    )
 
     doc.save(OUT)
     print(OUT)

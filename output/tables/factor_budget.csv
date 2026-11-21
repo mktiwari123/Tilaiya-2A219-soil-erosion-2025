@@ -1,0 +1,6 @@
+factor,reported_mean,reported_median,comparison,comparison_mean,comparison_median,ratio_reported_to_comparison
+R,7783.110478679929,6853.910671474314,"Raj et al. 2022 IRED, 1979-2018",772.3052362096018,781.220458984375,10.077764740892693
+K,0.03538679550372356,0.038442183285951614,No independent K grid was sampled,,,
+LS,1.3807250719149478,0.3954414427280426,"Standard LS on Copernicus, from sensitivity_dem_soil_loss.csv context",,,
+C,0.5788318805597975,0.5786113694767414,Erosivity-weighted van der Knijff C,0.16741004331753545,0.14040809928300935,3.457569624194509
+P,0.6752824918252179,0.5,"P = 1, no support practice",1.0,1.0,0.6752824918252179

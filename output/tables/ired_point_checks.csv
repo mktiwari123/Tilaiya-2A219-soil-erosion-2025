@@ -1,0 +1,4 @@
+place,lon,lat,R,crs,dtype
+mask centroid approx,85.37,24.25,781.220458984375,EPSG:4326,float32
+Cherrapunji,91.7,25.27,10205.654296875,EPSG:4326,float32
+Hazaribagh,85.36,23.99,544.5294189453125,EPSG:4326,float32

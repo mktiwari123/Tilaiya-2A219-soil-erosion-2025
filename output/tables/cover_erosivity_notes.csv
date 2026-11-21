@@ -1,0 +1,14 @@
+item,value
+support_pixels,4154545.0
+july_observed_ndvi_pixels,114325.0
+july_observed_ndvi_share,0.027518055527139554
+october_ndvi_median,0.6669784784317017
+october_vdk_C_median,0.018213032551105863
+annual_baseline_C_median,0.6971988081932068
+arcgrid_exponential_C_median,0.3082345426082611
+arcgrid_exponential_C_mean,0.3084138832166996
+arcgrid_exponential_C_min,0.00043070269748568535
+ired_min,604.765380859375
+ired_max,1020.922607421875
+effective_linear_C_mean,0.5788318805597975
+effective_exponential_C_mean,0.16741004331753545

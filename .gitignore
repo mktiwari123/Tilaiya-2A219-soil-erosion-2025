@@ -11,14 +11,10 @@ data/aligned/
 data/erosivity/
 data/gee/
 data/rainfall/
-data/dem/ASTGTM*
-data/dem/SRTM*
 output/models/
-output/connectivity/
 output/datasets/
 output/shapefiles/
 output/figures/
-output/rasters/
 *.docx
 *.pptx
 _github_deposit.py

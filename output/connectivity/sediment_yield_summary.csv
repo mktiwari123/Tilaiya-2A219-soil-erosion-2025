@@ -1,0 +1,2 @@
+soil_loss_source,weight_source,reservoir_mask,valid_cells,processed_cells,sediment_yield_t_yr,siltation_volume_m3_yr,pixel_area_ha,bulk_density_t_m3
+D:\Downloads MKT\GIS Works\Watershed IARI Whole\Tilaiya_Advanced\output\rasters\SoilLoss\SoilLoss_annual.tif,D:\Downloads MKT\GIS Works\Watershed IARI Whole\Tilaiya_Advanced\data\aligned,,4576196,4576196,1000.8316281429624,690.228709064112,0.015625,1.45

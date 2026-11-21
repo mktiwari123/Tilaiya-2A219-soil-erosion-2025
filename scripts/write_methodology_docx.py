@@ -1951,6 +1951,17 @@ def build():
         "Large rasters are not part of the code deposit. No new raster "
         "was calculated.",
     )
+    para(
+        doc,
+        "The public repository "
+        "mktiwari123/Tilaiya-2A219-soil-erosion-2025 now receives the "
+        "analysis rasters and the DEM tiles with the scripts and the "
+        "checksum inventory. The aligned monthly stacks remain in the "
+        "project folder because each file exceeds the 100 MB GitHub limit. "
+        "Displayed equations italicize single-letter variables and leave "
+        "LS, SDR, and IC upright. The abstract states IC0 = -6.29. "
+        "No new raster was calculated.",
+    )
 
     doc.save(OUT)
     print(OUT)

@@ -1,6 +1,6 @@
 # Tilaiya sub-watershed 2A219
 
-Analysis code for the 2025 monthly RUSLE study of sub-watershed 2A219 (715 km² mask). This GitHub repository holds the scripts, the shared `tilaiya` package, and the result tables. The project folder on disk also holds the elevation tiles, soil-loss rasters, map figures, and the manuscript.
+Reproduction files for the 2025 monthly RUSLE study of sub-watershed 2A219 (715 km² mask). This repository is public. It holds the scripts, the shared `tilaiya` package, the result tables, the checksum inventory, the DEM tiles used for the terrain comparison, and the soil-loss, factor, and sensitivity rasters.
 
 The outputs are scenario results for an ungauged headwater. Sub-watershed 2A219 has no erosion plots, no sediment station, and no 2025 bathymetric survey. Neighbouring records describe Karso, Banha, earlier Tilaiya streamflow, or reservoir storage for the whole dam.
 
@@ -14,7 +14,7 @@ The outputs are scenario results for an ungauged headwater. Sub-watershed 2A219 
 - `data/dem/` — Copernicus GLO-30, SRTM, and ASTER tiles used for the terrain comparison
 - `Tilaiya_Manuscript_Draft.docx` and `Tilaiya_Advanced_Methodology.docx`
 
-The elevation tiles, rasters, and figures remain in that folder. They are not part of this code deposit. Sentinel-1, Sentinel-2, IMD rainfall, and SoilGrids remain in their public collections. The annual baseline rasters and the SoilProperties project are left unchanged.
+Map figures and the manuscript remain in the project folder. The aligned monthly stacks in `data/aligned` exceed GitHub's 100 MB file limit, so they remain in that folder. Sentinel-1, Sentinel-2, IMD rainfall, and SoilGrids remain in their public collections. The annual baseline rasters and the SoilProperties project are left unchanged.
 
 ## Reported monthly maps
 
